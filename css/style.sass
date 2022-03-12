@@ -12,7 +12,9 @@ $white: hsl(0, 0%, 100%)
   padding: 0
   box-sizing: border-box
 
-html,
+html
+  min-height: 100vh
+
 body
   height: 100%
   min-height: 100vh
@@ -20,11 +22,11 @@ body
 body
   position: relative
   background-color: hsl(0, 0%, 100%)
-  background-image: url("../img/icon/bg-pattern-top-desktop.svg"), url("../img/icon/bg-pattern-bottom-desktop.svg")
-  background-position: left 20vh top, right 20vh top 15vh
+  background-image: url("../img/icon/bg-pattern-top-mobile.svg"), url("../img/icon/bg-pattern-bottom-mobile.svg")
+  background-position: left top, right bottom -50vh
   background-size: auto, cover
 
-  background-attachment:fixed
+  background-attachment: fixed
   background-repeat: no-repeat no-repeat
 
   display: grid
@@ -46,51 +48,44 @@ p
 .main-container
   max-width: 1220px
   grid-area: c-main
-  min-height: 90vh
-  padding: 20px 55px
+  padding: 50px 30px
 
   display: grid
-  align-items: center
+  gap: 40px
   grid-template-areas: "c-hero" "c-cards"
-  grid-template-rows: 2.5fr 3fr
-  gap: 20px
 
   .hero
     grid-area: c-hero
-    height: 100%
-
     display: grid
-    grid-template-areas: "c-text c-list"
-    grid-template-columns: 1fr 1fr
+    grid-template-areas: "c-text" "c-list"
+    grid-template-columns: 1fr
     align-items: center
-    grid-gap: 30px
-    padding-top: 3%
+    gap: 50px
 
     &-text
       grid-area: c-text
 
     &-title
-      font-size: 45px
-      line-height: 48px
-      white-space: pre-line
+      font-size: 32px
+      line-height: 1
       margin-top: 32px
       margin-bottom: 14px
       color: $primary_very_magenta
+      text-align: center
 
     &-description
       line-height: 24px
       color: $dark_grayish_magenta
-      white-space: pre-line
+      text-align: center
 
     &-list
       grid-area: c-list
       list-style: none
       display: grid
-      grid-template-columns: repeat(12, 1fr)
-      grid-template-rows: repeat(3, 1fr)
+      grid-template-columns: 1fr
       gap: 20px
       align-items: center
-      padding-top: 6%
+      align-self: start
 
       > li
         background: $light_grayish_magenta
@@ -101,17 +96,7 @@ p
         gap: 10px
         align-items: center
         justify-content: start
-
-        &:first-child
-          grid-column: 1 / 11
-          grid-row: 1 / 1
-        &:nth-child(2)
-          grid-column: 2 / 12
-          grid-row: 2 / 2
-
-        &:last-child
-          grid-column: 3 / 13
-          grid-row: 3 / 3
+        flex-direction: column
 
         .item-title
           font-weight: 700
@@ -123,34 +108,21 @@ p
     &-grid
       grid-area: c-cards
       display: grid
-      grid-template-rows: repeat(12, 1fr)
-      grid-template-columns: repeat(3, 1fr)
-      column-gap: 28px
+      grid-template-rows: repeat(3, 1fr)
+      row-gap: 28px
       align-self: start
 
     &-item
       border-radius: 8px
-      height: 234px
       background: $primary_very_magenta
       padding: 46px 32px
-
-      &:first-child
-        grid-row: 1 / 12
-        grid-column: 1 / 1
-
-      &:nth-child(2)
-        grid-row: 2 / 13
-        grid-column: 2 / 2
-
-      &:last-child
-        grid-row: 3 / 14
-        grid-column: 3 / 3
 
     &-header
       display: grid
       grid-template-areas: "c-img c-text"
       gap: 23px
       grid-template-columns: auto 1fr
+      align-items: center
 
     &-avatar
       grid-area: c-img
@@ -206,8 +178,75 @@ p
     color: $primary_soft_pink
     text-decoration: none
 
-//@media (min-width: 620px)
+@media (min-width: 992px)
+  body
+    background-image: url("../img/icon/bg-pattern-top-desktop.svg"), url("../img/icon/bg-pattern-bottom-desktop.svg")
+    background-position: left top, right bottom -30vh
 
-//@media (min-width: 768px)
-  
-//@media (min-width: 992px)
+  .main-container
+    padding: 20px 55px 
+    min-height: 90vh
+    align-items: center
+    grid-template-rows: 2.5fr 3fr
+
+    .hero
+      height: 100%
+      grid-template-areas: "c-text c-list"
+      grid-template-columns: 1fr 1fr
+      gap: 30px
+      padding-top: 3%
+
+      &-title
+        font-size: 45px
+        line-height: 48px
+        text-align: left
+        white-space: pre-line
+
+      &-description
+        white-space: pre-line
+        text-align: left
+
+      &-list
+        grid-template-columns: repeat(12, 1fr)
+        grid-template-rows: repeat(3, 1fr)
+        padding-top: 6%
+        align-self: center
+
+        > li
+          flex-direction: row
+
+          &:first-child
+            grid-column: 1 / 11
+            grid-row: 1 / 1
+          &:nth-child(2)
+            grid-column: 2 / 12
+            grid-row: 2 / 2
+
+          &:last-child
+            grid-column: 3 / 13
+            grid-row: 3 / 3
+
+  .card
+    &-grid
+      grid-template-rows: repeat(12, 1fr)
+      grid-template-columns: repeat(3, 1fr)
+      column-gap: 28px
+
+    &-item
+      height: 234px
+
+      &:first-child
+        grid-row: 1 / 12
+        grid-column: 1 / 1
+
+      &:nth-child(2)
+        grid-row: 2 / 13
+        grid-column: 2 / 2
+
+      &:last-child
+        grid-row: 3 / 14
+        grid-column: 3 / 3
+
+@media (min-width: 1220px)
+  body
+    background-position: left 20vh top, right 20vh top 15vh
