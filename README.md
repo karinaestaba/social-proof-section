@@ -35,4 +35,4 @@ This is a solution to the [Social proof section challenge on Frontend Mentor](ht
 ## Author
 
 - Website - [Karina Estaba]
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/karinaestaba)
+- Frontend Mentor - [@karinaestaba](https://www.frontendmentor.io/profile/karinaestaba)
